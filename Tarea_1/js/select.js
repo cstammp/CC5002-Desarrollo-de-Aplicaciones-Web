@@ -32,5 +32,6 @@ fetch("../region_comuna.json")
             }
         });
     })
+    // Manejar errores al cargar el JSON
     .catch(error => console.error('Error cargando el JSON:', error));
 

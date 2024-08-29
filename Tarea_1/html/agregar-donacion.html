@@ -13,6 +13,7 @@
         <form name="donacion-form" method="post" enctype="multipart/form-data">
 
             <!-- Información de Contacto -->
+            <h2>Información de Contacto</h2>
 
             <!-- Nombre Donante -->
             <div id="name-input" class="group-input">
@@ -45,11 +46,13 @@
             <div id="comuna-input" class="group-input">
                 <label for="comuna">Comuna <span style="color:#ee0c0cc0">*</span></label>
                 <select id="comuna" name="comuna" required>
+                    <option value=""> --- Seleccionar Comuna --- </option>
                     <!-- Opciones de comunas se llenarán dinámicamente -->
                 </select>
             </div>
 
-            <!-- Información Dispositivo -->
+            <!-- Información del Dispositivo -->
+            <h2>Información del dispositivo</h2>
 
             <!-- Nombre Dispositivo -->
             <div id="device-input" class="group-input">
@@ -114,6 +117,7 @@
                 <button type="button" id="submit-btn">Publicar esta donación</button>
             </div>
 
+            <!-- Botón Regresar al Inicio -->
             <div class="return">
                 <a href="index.html">Regresar al inicio</a>
             </div>
@@ -121,7 +125,8 @@
         </form>
     </div>
 
-    <!-- Link archivo javascript -->
+    <!-- Links archivos javascript -->
     <script src="../js/select.js"></script>
+    <script src="../js/validation.js"></script>
 </body>
 </html>
