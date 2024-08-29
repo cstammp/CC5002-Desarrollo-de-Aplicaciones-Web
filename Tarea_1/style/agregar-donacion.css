@@ -58,12 +58,12 @@ button {
 }
 
 button#add-device {
-    background-color: #335ada;
+    background-color: #4c64ee;
     margin-top: 20px;
 }
 
 button#add-device:hover {
-    background-color:  #0c3fe9;
+    background-color:  #2537a1;
 }
 
 button#submit-btn {
