@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Donación | HOE</title>
+    <link rel="stylesheet" href="../style/agregar-donacion.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Agregar Donación</h1>
+
+        <form name="donacion-form" method="post" enctype="multipart/form-data">
+
+            <!-- Información de Contacto -->
+
+            <!-- Nombre Donante -->
+            <div id="name-input" class="group-input">
+                <label for="name">Nombre donante <span style="color:#ee0c0cc0">*</span></label>
+                <input type="text" id="name" name="name" minlength="3" maxlength="80" size="80" required>
+            </div>
+
+            <!-- Email Donante -->
+            <div id="email-input" class="group-input">
+                <label for="email">Email donante <span style="color:#ee0c0cc0">*</span></label>
+                <input type="email" id="email" name="email" size="30" required>
+            </div>
+                
+            <!-- Telefono Donante -->
+            <div id="phone-input" class="group-input">
+                <label for="phone">Número celular donante</label>
+                <input type="tel" id="phone" name="phone" size="15">
+            </div>
+
+            <!-- Región -->
+            <div id="region-input" class="group-input">
+                <label for="region">Región <span style="color:#ee0c0cc0">*</span></label>
+                <select id="region" name="region" required>
+                    <option value=""> --- Seleccionar Región --- </option>
+                    <!-- Opciones de regiones se llenarán dinámicamente -->
+                </select>
+            </div>
+
+            <!-- Comuna -->
+            <div id="comuna-input" class="group-input">
+                <label for="comuna">Comuna <span style="color:#ee0c0cc0">*</span></label>
+                <select id="comuna" name="comuna" required>
+                    <!-- Opciones de comunas se llenarán dinámicamente -->
+                </select>
+            </div>
+
+            <!-- Información Dispositivo -->
+
+            <!-- Nombre Dispositivo -->
+            <div id="device-input" class="group-input">
+                <label for="device">Nombre dispositivo <span style="color:#ee0c0cc0">*</span></label>
+                <input type="text" id="name" name="name" minlength="3" maxlength="80" size="80" required>
+            </div>
+
+            <!-- Descripción Dispositivo -->
+            <div id="description-input" class="group-input">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" placeholder="Describe acá el dispositivo..." rows="4" cols="50"></textarea>
+            </div>
+
+            <!-- Tipo Dispositivo -->
+            <div id="device-type-input" class="group-input">
+                <label for="device-type">Tipo <span style="color:#ee0c0cc0">*</span></label>
+                <select id="device-type" name="device-type" required>
+                    <option value="">--- Seleccionar ---</option>
+                    <option value="pantalla">Pantalla</option>
+                    <option value="notebook">Notebook</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="celular">Celular</option>
+                    <option value="consola">Consola</option>
+                    <option value="mouse">Mouse</option>
+                    <option value="teclado">Teclado</option>
+                    <option value="impresora">Impresora</option>
+                    <option value="parlante">Parlante</option>
+                    <option value="audifonos">Audífonos</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+            <!-- Años de Uso Dispositivo-->
+            <div id="device-age-input" class="group-input">
+            <label for="device-age">Años de uso <span style="color:#ee0c0cc0">*</span></label>
+            <input type="number" id="device-age" name="device-age" min="1" max="99" step="1" size="3" required>    
+
+            <!-- Estado Funcionamiento Dispositivo -->
+            <div id="device-state-input" class="group-input">
+                <label for="device-state">Estado funcionamiento <span style="color:#ee0c0cc0">*</span></label>
+                <select id="device-state" name="device-state" required>
+                    <option value="">--- Seleccionar ---</option>
+                    <option value="perfecto">Funciona perfecto</option>
+                    <option value="a-medias">Funciona a medias</option>
+                    <option value="no-funciona">No funciona</option>
+                </select>
+            </div>
+
+            <!-- Subir Imagenes Dispositivo -->
+            <div id="img-device-input" class="group-input">
+                <label for="img-device">Foto de productos <span style="color:#ee0c0cc0">*</span></label>
+                <input type="file" id="img-device" name="img-device" accept="image/*" multiple required>
+            </div>
+
+            <!-- Botón Agregar Dispositivo -->
+            <div class="buttons">
+                <button type="button" id="add-device">Agregar otro dispositivo a esta donación</button>
+            </div>
+
+            <!-- Botón Publicar Dispositivo -->
+            <div class="buttons">
+                <button type="button" id="submit-btn">Publicar esta donación</button>
+            </div>
+
+            <div class="return">
+                <a href="index.html">Regresar al inicio</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Link archivo javascript -->
+    <script src="../js/select.js"></script>
+</body>
+</html>
