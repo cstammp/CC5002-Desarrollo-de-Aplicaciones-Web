@@ -61,3 +61,24 @@ const validateFiles = (files) => {
 };
 
 // --- Form Handling ---
+
+const handleFormSubmit = () => {
+    console.log("Validating form...");
+
+    let nameInput = document.getElementById("name").value;
+    let emailInput = document.getElementById("email").value;
+    let phoneInput = document.getElementById("phone").value;
+    let regionInput = document.getElementById("region").value;
+    let comunaInput = document.getElementById("comuna").value;
+
+
+
+
+
+
+    let deviceInput = document.getElementById("device").value;
+    let deviceTypeInput = document.getElementById("device-type").value;
+    let deviceAgeInput = document.getElementById("device-age").value;
+    let deviceStateInput = document.getElementById("device-state").value;
+    let deviceImgInput = document.getElementById("img-device");
+}    

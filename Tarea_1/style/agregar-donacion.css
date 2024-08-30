@@ -79,6 +79,10 @@ button#submit-btn:hover {
     text-align: center;
 }
 
+fieldset {
+    border: none;
+}    
+
 @media (max-width: 480px) {
     .main-container {
         padding: 15px;
