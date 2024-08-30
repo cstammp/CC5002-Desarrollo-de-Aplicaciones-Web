@@ -65,20 +65,67 @@ const validateFiles = (files) => {
 const handleFormSubmit = () => {
     console.log("Validating form...");
 
-    let nameInput = document.getElementById("name").value;
-    let emailInput = document.getElementById("email").value;
-    let phoneInput = document.getElementById("phone").value;
-    let regionInput = document.getElementById("region").value;
-    let comunaInput = document.getElementById("comuna").value;
+    // Información de Contacto
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const regionInput = document.getElementById("region");
+    const comunaInput = document.getElementById("comuna");
 
+    const nameError = document.getElementById("name-error"); 
+    const emailError = document.getElementById("email-error");
+    const regionError = document.getElementById("region-error");
+    const comunaError = document.getElementById("comuna-error");
 
+    //Información del Dispositivo
+    let deviceNameInputs = document.querySelectorAll(".deviceName");
+    let deviceTypeInputs = document.querySelectorAll(".deviceType");
+    let deviceAgeInputs = document.querySelectorAll(".deviceAge");
+    let deviceStateInputs = document.querySelectorAll(".deviceState");
+    let deviceImgInputs = document.querySelectorAll(".deviceImg");
 
+    // variables auxiliares de validación y función.
+    let isValid = true;
 
+    // lógica de validación
+    if (!validateName(nameInput.value)) {
+        isValid = false;
+        nameInput.style.borderColor = "red";
+        nameError.textContent = "* Por favor ingresa un nombre válido";
+    } else {
+        nameInput.style.borderColor = "";
+        nameError.textContent = "*";
+    }
 
+    if (!validateEmail(emailInput.value)) {
+        isValid = false;
+        emailInput.style.borderColor = "red";
+        emailError.textContent = "* Por favor ingresa un correo electrónico válido";
+    } else {
+        emailInput.style.borderColor = "";
+        emailError.textContent = "*";
+    }
 
-    let deviceInput = document.getElementById("device").value;
-    let deviceTypeInput = document.getElementById("device-type").value;
-    let deviceAgeInput = document.getElementById("device-age").value;
-    let deviceStateInput = document.getElementById("device-state").value;
-    let deviceImgInput = document.getElementById("img-device");
-}    
+    if (!validateSelect(regionInput.value)) {
+        isValid = false;
+        regionInput.style.borderColor = "red";
+        regionError.textContent = "* Por favor ingresa una región válida";
+    } else {
+        regionInput.style.borderColor = "";
+        regionError.textContent = "*";
+    }
+
+    if (!validateSelect(comunaInput.value)) {
+        isValid = false;
+        comunaInput.style.borderColor = "red";
+        comunaError.textContent = "* Por favor ingresa una comuna válida";
+    } else {
+        comunaInput.style.borderColor = "";
+        comunaError.textContent = "*";
+    }
+
+};  
+
+// --- Event Listener ---
+
+const submitButton = document.getElementById("submit-btn");
+submitButton.addEventListener("click", handleFormSubmit);

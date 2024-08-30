@@ -18,13 +18,13 @@
 
                 <!-- Nombre Donante -->
                 <div id="name-input" class="group-input">
-                    <label for="name">Nombre donante <span style="color:#ee0c0cc0">*</span></label>
+                    <label for="name">Nombre donante <span id="name-error" style="color:#ee0c0cc0">*</span></label>
                     <input type="text" id="name" name="name" minlength="3" maxlength="80" size="80" required>
                 </div>
 
                 <!-- Email Donante -->
                 <div id="email-input" class="group-input">
-                    <label for="email">Email donante <span style="color:#ee0c0cc0">*</span></label>
+                    <label for="email">Email donante <span id="email-error" style="color:#ee0c0cc0">*</span></label>
                     <input type="email" id="email" name="email" size="30" required>
                 </div>
 
@@ -36,7 +36,7 @@
 
                 <!-- Región -->
                 <div id="region-input" class="group-input">
-                    <label for="region">Región <span style="color:#ee0c0cc0">*</span></label>
+                    <label for="region">Región <span id="region-error" style="color:#ee0c0cc0">*</span></label>
                     <select id="region" name="region" required>
                         <option value=""> --- Seleccionar Región --- </option>
                         <!-- Opciones de regiones se llenarán dinámicamente -->
@@ -45,7 +45,7 @@
 
                 <!-- Comuna -->
                 <div id="comuna-input" class="group-input">
-                    <label for="comuna">Comuna <span style="color:#ee0c0cc0">*</span></label>
+                    <label for="comuna">Comuna <span id="comuna-error" style="color:#ee0c0cc0">*</span></label>
                     <select id="comuna" name="comuna" required>
                             <option value=""> --- Seleccionar Comuna --- </option>
                             <!-- Opciones de comunas se llenarán dinámicamente -->

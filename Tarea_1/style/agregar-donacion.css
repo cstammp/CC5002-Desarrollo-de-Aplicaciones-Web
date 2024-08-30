@@ -87,9 +87,4 @@ fieldset {
     .main-container {
         padding: 15px;
     }
-    
-    button#submit-btn {
-        padding: 5px;
-        font-size: 14px;
-    }
 }
