@@ -1,4 +1,5 @@
-// Usar fetch para cargar el JSON region_comuna.json
+//  --- Usar fetch para cargar el JSON region_comuna.json ---
+
 fetch("../region_comuna.json")
     .then(response => response.json())
     .then(data => {

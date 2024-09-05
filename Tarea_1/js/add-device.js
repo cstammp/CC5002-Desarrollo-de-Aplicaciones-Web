@@ -1,4 +1,4 @@
-// Añadir formulario nuevo dispositivo
+//  --- Añadir formulario nuevo dispositivo ---
 let contadorDispositivos = 0;
 
 const addDeviceForm = () => {

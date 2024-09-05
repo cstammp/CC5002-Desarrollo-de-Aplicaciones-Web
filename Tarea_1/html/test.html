@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios del dispositivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .comment {
+            margin-bottom: 10px;
+        }
+        .comment-form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Comentarios sobre el dispositivo</h2>
+
+<div id="comment-list">
+    <!-- Aquí se mostrarán los comentarios -->
+</div>
+
+<div class="comment-form">
+    <h3>Agregar un nuevo comentario</h3>
+    <form id="commentForm">
+        <label for="name">Nombre (obligatorio, entre 3 y 80 caracteres):</label>
+        <input type="text" id="name" name="name" minlength="3" maxlength="80" required>
+
+        <label for="commentText">Comentario (obligatorio, mínimo 5 caracteres):</label>
+        <textarea id="commentText" name="commentText" rows="4" cols="50" minlength="5" required></textarea>
+
+        <button type="submit">Agregar comentario</button>
+    </form>
+</div>
+
+<script>
+// Array para almacenar los comentarios
+const comments = [
+    { date: '2024-09-01', name: 'Carlos', text: 'Buen dispositivo, me ha servido bastante.' },
+    { date: '2024-09-03', name: 'Ana', text: 'La batería dura más de lo esperado.' }
+];
+
+// Función para mostrar los comentarios
+function displayComments() {
+    const commentList = document.getElementById('comment-list');
+    commentList.innerHTML = ''; // Limpiar el contenido previo
+
+    comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `<strong>${comment.name}</strong> (${comment.date}):<br>${comment.text}<br><br>`;
+        commentList.appendChild(commentDiv);
+    });
+}
+
+// Función para manejar el envío del formulario
+document.getElementById('commentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Obtener los valores del formulario
+    const name = document.getElementById('name').value;
+    const commentText = document.getElementById('commentText').value;
+
+    // Crear un nuevo comentario
+    const newComment = {
+        date: new Date().toISOString().split('T')[0], // Fecha actual en formato YYYY-MM-DD
+        name: name,
+        text: commentText
+    };
+
+    // Agregar el nuevo comentario al array
+    comments.push(newComment);
+
+    // Limpiar el formulario
+    document.getElementById('commentForm').reset();
+
+    // Volver a mostrar los comentarios
+    displayComments();
+});
+
+// Mostrar los comentarios al cargar la página
+window.onload = function() {
+    displayComments();
+};
+</script>
+
+</body>
+</html>

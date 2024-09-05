@@ -32,10 +32,37 @@
             <img id="img-dispositivo" src="../img/pantalla640.png" alt="Monitor Acer 27 / 100 Hz">
         </div>
 
+        <div id="comment-list">
+            <h3>Comentarios sobre el dispositivo</h3>
+            <!-- Aquí se llenaran los comentarios dinámicamente -->
+        </div>
+
+        <div class="comment-form">
+            <h3>Agregar comentario</h3>
+            <form id="comment-form" name="comment-form" method="post" enctype="multipart/form-data">
+
+                <div id="name-input" class="group-input">
+                    <label for="name">Nombre <span id="name-error" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="name" name="name" minlength="3" maxlength="80" required>
+                </div>
+
+                <div id="text-input" class="group-input"> 
+                    <label for="text">Comentario <span id="text-error" style="color:#ee0c0cc0">*</span></label>
+                    <textarea id="text" name="text" placeholder="Escribe tu comentario ..." rows="4" cols="50" minlength="5" required></textarea>
+                </div>
+
+                <!-- Botón Publicar Comentario -->
+                <div class="buttons">
+                    <button type="button" id="submit-btn">Publicar Comentario</button>
+                </div>
+            </form>    
+        </div>
+
         <div class="regresar">
             <a href="index.html">Regresar al inicio</a>
         </div>
     </div>
     <script src="../js/resize-img.js"></script>
+    <script src="../js/add-comment.js"></script>
 </body>
 </html>
