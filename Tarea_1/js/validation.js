@@ -123,6 +123,66 @@ const handleFormSubmit = () => {
         comunaError.textContent = "*";
     }
 
+    for (let i = 0; i < deviceNameInputs.length; i++) {
+        const deviceNameError = document.getElementById(`device-name-error-${i}`);
+        if (!validateName(deviceNameInputs[i].value)) {
+            isValid = false;
+            deviceNameInputs[i].style.borderColor = "red";
+            deviceNameError.textContent = "* Por favor ingresa un nombre válido";
+        } else {
+            deviceNameInputs[i].style.borderColor = "";
+            deviceNameError.textContent = "*";
+        }
+
+        for (let i = 0; i < deviceTypeInputs.length; i++) {
+            const deviceTypeError = document.getElementById(`device-type-error-${i}`);
+            if (!validateSelect(deviceTypeInputs[i].value)) {
+                isValid = false;
+                deviceTypeInputs[i].style.borderColor = "red";
+                deviceTypeError.textContent = "* Por favor ingresa un tipo válido";
+            } else {
+                deviceTypeInputs[i].style.borderColor = "";
+                deviceTypeError.textContent = "*";
+            }
+        }
+        
+        for (let i = 0; i < deviceAgeInputs.length; i++) {
+            const deviceAgeError = document.getElementById(`device-age-error-${i}`);
+            if (!validateYears(deviceAgeInputs[i].value)) {
+                isValid = false;
+                deviceAgeInputs[i].style.borderColor = "red";
+                deviceAgeError.textContent = "* Por favor ingresa un año válido";
+            } else {
+                deviceAgeInputs[i].style.borderColor = "";
+                deviceAgeError.textContent = "*";
+            }
+        }
+
+        for (let i = 0; i < deviceStateInputs.length; i++) {
+            const deviceStateError = document.getElementById(`device-state-error-${i}`);
+            if (!validateSelect(deviceStateInputs[i].value)) {
+                isValid = false;
+                deviceStateInputs[i].style.borderColor = "red";
+                deviceStateError.textContent = "* Por favor ingresa un estado válido";
+            } else {
+                deviceStateInputs[i].style.borderColor = "";
+                deviceStateError.textContent = "*";
+            }
+        }
+
+        for (let i = 0; i < deviceImgInputs.length; i++) {
+            const deviceImgError = document.getElementById(`device-img-error-${i}`);
+            if (!validateFiles(deviceImgInputs[i].value)) {
+                isValid = false;
+                deviceImgInputs[i].style.borderColor = "red";
+                deviceImgError.textContent = "* Por favor ingresa imágenes válidas";
+            } else {
+                deviceImgInputs[i].style.borderColor = "";
+                deviceImgError.textContent = "*";
+            }
+        }
+
+    }
 };  
 
 // --- Event Listener ---

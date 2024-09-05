@@ -59,20 +59,20 @@
 
                 <!-- Nombre Dispositivo -->
                 <div id="device-input" class="group-input">
-                    <label for="device">Nombre dispositivo <span style="color:#ee0c0cc0">*</span></label>
-                    <input type="text" id="device" name="device" class="deviceName" minlength="3" maxlength="80" size="80" required>
+                    <label for="device-0">Nombre dispositivo <span id="device-name-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="device-0" name="device-0" class="deviceName" minlength="3" maxlength="80" size="80" required>
                 </div>
 
                 <!-- Descripción Dispositivo -->
                 <div id="description-input" class="group-input deviceDescription-input">
-                    <label for="description">Descripción</label>
-                    <textarea id="description" name="description" class="deviceDescription" placeholder="Describe acá el dispositivo..." rows="4" cols="50"></textarea>
+                    <label for="description-0">Descripción</label>
+                    <textarea id="description-0" name="description-0" class="deviceDescription" placeholder="Describe acá el dispositivo..." rows="4" cols="50"></textarea>
                 </div>
 
                 <!-- Tipo Dispositivo -->
                 <div id="device-type-input" class="group-input">
-                    <label for="device-type">Tipo <span style="color:#ee0c0cc0">*</span></label>
-                    <select id="device-type" name="device-type" class="deviceType" required>
+                    <label for="device-type-0">Tipo <span id="device-type-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <select id="device-type-0" name="device-type-0" class="deviceType" required>
                         <option value="">--- Seleccionar ---</option>
                         <option value="pantalla">Pantalla</option>
                         <option value="notebook">Notebook</option>
@@ -90,14 +90,14 @@
 
                 <!-- Años de Uso Dispositivo-->
                 <div id="device-age-input" class="group-input">
-                    <label for="device-age">Años de uso <span style="color:#ee0c0cc0">*</span></label>
-                    <input type="number" id="device-age" name="device-age" class="deviceAge" min="1" max="99" step="1" size="3" required> 
+                    <label for="device-age-0">Años de uso <span id="device-age-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="number" id="device-age-0" name="device-age-0" class="deviceAge" min="1" max="99" step="1" size="3" required> 
                 </div>   
 
                 <!-- Estado Funcionamiento Dispositivo -->
                 <div id="device-state-input" class="group-input">
-                    <label for="device-state">Estado funcionamiento <span style="color:#ee0c0cc0">*</span></label>
-                    <select id="device-state" name="device-state" class="deviceState" required>
+                    <label for="device-state-0">Estado funcionamiento <span id="device-state-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <select id="device-state-0" name="device-state-0" class="deviceState" required>
                         <option value="">--- Seleccionar ---</option>
                         <option value="perfecto">Funciona perfecto</option>
                         <option value="a-medias">Funciona a medias</option>
@@ -107,8 +107,8 @@
 
                 <!-- Subir Imagenes Dispositivo -->
                 <div id="img-device-input" class="group-input">
-                    <label for="img-device">Foto de productos <span style="color:#ee0c0cc0">*</span></label>
-                    <input type="file" id="img-device" name="img-device" class="deviceImg" accept="image/*" multiple required>
+                    <label for="img-device-0">Foto de productos <span id="device-img-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="file" id="img-device-0" name="img-device-0" class="deviceImg" accept="image/*" multiple required>
                 </div>
             </fieldset>
 

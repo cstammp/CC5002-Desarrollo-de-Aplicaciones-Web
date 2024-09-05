@@ -1,5 +1,5 @@
 // Añadir formulario nuevo dispositivo
-let contadorDispositivos = 1;
+let contadorDispositivos = 0;
 
 const addDeviceForm = () => {
     contadorDispositivos++;
@@ -10,7 +10,7 @@ const addDeviceForm = () => {
     const deviceNameDiv = document.createElement("div");
     deviceNameDiv.classList.add("group-input");
     deviceNameDiv.innerHTML = `
-        <label for="device-${contadorDispositivos}">Nombre dispositivo ${contadorDispositivos}<span style="color:#ee0c0cc0">*</span></label>
+        <label for="device-${contadorDispositivos}">Nombre dispositivo ${contadorDispositivos}<span id="device-name-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <input type="text" id="device-${contadorDispositivos}" name="device-${contadorDispositivos}" class="deviceName" minlength="3" maxlength="80" size="80" required>
     `;
 
@@ -24,7 +24,7 @@ const addDeviceForm = () => {
     const deviceTypeDiv = document.createElement("div");
     deviceTypeDiv.classList.add("group-input");
     deviceTypeDiv.innerHTML = `
-        <label for="device-type-${contadorDispositivos}">Tipo <span style="color:#ee0c0cc0">*</span></label>
+        <label for="device-type-${contadorDispositivos}">Tipo <span id="device-type-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <select id="device-type-${contadorDispositivos}" name="device-type-${contadorDispositivos}" class="deviceType" required>
             <option value="">--- Seleccionar ---</option>
             <option value="pantalla">Pantalla</option>
@@ -44,14 +44,14 @@ const addDeviceForm = () => {
     const deviceAgeDiv = document.createElement("div");
     deviceAgeDiv.classList.add("group-input");
     deviceAgeDiv.innerHTML = `
-        <label for="device-age-${contadorDispositivos}">Años de uso <span style="color:#ee0c0cc0">*</span></label>
+        <label for="device-age-${contadorDispositivos}">Años de uso <span id="device-age-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <input type="number" id="device-age-${contadorDispositivos}" name="device-age-${contadorDispositivos}" class="deviceAge" min="1" max="99" step="1" size="3" required> 
     `;
 
     const deviceStateDiv = document.createElement("div");
     deviceStateDiv.classList.add("group-input");
     deviceStateDiv.innerHTML = `
-        <label for="device-state-${contadorDispositivos}">Estado funcionamiento <span style="color:#ee0c0cc0">*</span></label>
+        <label for="device-state-${contadorDispositivos}">Estado funcionamiento <span id="device-state-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <select id="device-state-${contadorDispositivos}" name="device-state-${contadorDispositivos}" class="deviceState" required>
             <option value="">--- Seleccionar ---</option>
             <option value="perfecto">Funciona perfecto</option>
@@ -63,7 +63,7 @@ const addDeviceForm = () => {
     const deviceImgDiv = document.createElement("div");
     deviceImgDiv.classList.add("group-input");
     deviceImgDiv.innerHTML = `
-        <label for="img-device-${contadorDispositivos}">Foto de productos <span style="color:#ee0c0cc0">*</span></label>
+        <label for="img-device-${contadorDispositivos}">Foto de productos <span id="device-img-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <input type="file" id="img-device-${contadorDispositivos}" name="img-device-${contadorDispositivos}" class="deviceImg" accept="image/*" multiple required>
     `;
 
