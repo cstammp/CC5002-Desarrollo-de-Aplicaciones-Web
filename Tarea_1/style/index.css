@@ -9,8 +9,14 @@ body {
     height: 70vh;
 }
 
-.link-menu {
+.logo {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.link-menu {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
