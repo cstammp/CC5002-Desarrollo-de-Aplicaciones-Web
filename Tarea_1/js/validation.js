@@ -36,9 +36,9 @@ const validateSelect = (select) => {
 
 const validateYears = (years) => {
     if(!years) return false;
-    let yearsValid = Number(years.trim()) >= 1 && Number(years.trim()) <= 99;
-    let formatValid = Number.isInteger(Number(years.trim()));
-    return yearsValid && formatValid;
+    let formatValid = Number.isInteger(Number(years));
+    let yearsValid = Number(years) >= 1 && Number(years) <= 99;
+    return formatValid && yearsValid;
 }
 
 const validateFiles = (files) => {
