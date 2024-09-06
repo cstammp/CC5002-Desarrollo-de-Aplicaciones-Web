@@ -6,7 +6,7 @@ const comments = [
 //  --- Función para llenar los comentarios dinámicamente ---
 const populateComments = () => {
     const commentList = document.getElementById('comment-list');
-    commentList.innerHTML = '<h3>Comentarios sobre el dispositivo</h3>'; // Limpiar el contenido previo
+    commentList.innerHTML = '<h3>Comentarios sobre el dispositivo</h3>';
 
     comments.forEach(comment => {
         const commentDiv = document.createElement('div');

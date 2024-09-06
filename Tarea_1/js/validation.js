@@ -133,56 +133,110 @@ const handleFormSubmit = () => {
             deviceNameInputs[i].style.borderColor = "";
             deviceNameError.textContent = "*";
         }
+    };
 
-        for (let i = 0; i < deviceTypeInputs.length; i++) {
-            const deviceTypeError = document.getElementById(`device-type-error-${i}`);
-            if (!validateSelect(deviceTypeInputs[i].value)) {
-                isValid = false;
-                deviceTypeInputs[i].style.borderColor = "red";
-                deviceTypeError.textContent = "* Por favor ingresa un tipo válido";
-            } else {
-                deviceTypeInputs[i].style.borderColor = "";
-                deviceTypeError.textContent = "*";
-            }
+    for (let i = 0; i < deviceTypeInputs.length; i++) {
+        const deviceTypeError = document.getElementById(`device-type-error-${i}`);
+        if (!validateSelect(deviceTypeInputs[i].value)) {
+            isValid = false;
+            deviceTypeInputs[i].style.borderColor = "red";
+            deviceTypeError.textContent = "* Por favor ingresa un tipo válido";
+        } else {
+            deviceTypeInputs[i].style.borderColor = "";
+            deviceTypeError.textContent = "*";
         }
+    };
         
-        for (let i = 0; i < deviceAgeInputs.length; i++) {
-            const deviceAgeError = document.getElementById(`device-age-error-${i}`);
-            if (!validateYears(deviceAgeInputs[i].value)) {
-                isValid = false;
-                deviceAgeInputs[i].style.borderColor = "red";
-                deviceAgeError.textContent = "* Por favor ingresa un año válido";
-            } else {
-                deviceAgeInputs[i].style.borderColor = "";
-                deviceAgeError.textContent = "*";
-            }
+    for (let i = 0; i < deviceAgeInputs.length; i++) {
+        const deviceAgeError = document.getElementById(`device-age-error-${i}`);
+        if (!validateYears(deviceAgeInputs[i].value)) {
+            isValid = false;
+            deviceAgeInputs[i].style.borderColor = "red";
+            deviceAgeError.textContent = "* Por favor ingresa un año válido";
+        } else {
+            deviceAgeInputs[i].style.borderColor = "";
+            deviceAgeError.textContent = "*";
         }
+    };
 
-        for (let i = 0; i < deviceStateInputs.length; i++) {
-            const deviceStateError = document.getElementById(`device-state-error-${i}`);
-            if (!validateSelect(deviceStateInputs[i].value)) {
-                isValid = false;
-                deviceStateInputs[i].style.borderColor = "red";
-                deviceStateError.textContent = "* Por favor ingresa un estado válido";
-            } else {
-                deviceStateInputs[i].style.borderColor = "";
-                deviceStateError.textContent = "*";
-            }
+    for (let i = 0; i < deviceStateInputs.length; i++) {
+        const deviceStateError = document.getElementById(`device-state-error-${i}`);
+        if (!validateSelect(deviceStateInputs[i].value)) {
+            isValid = false;
+            deviceStateInputs[i].style.borderColor = "red";
+            deviceStateError.textContent = "* Por favor ingresa un estado válido";
+        } else {
+            deviceStateInputs[i].style.borderColor = "";
+            deviceStateError.textContent = "*";
         }
+    };
 
-        for (let i = 0; i < deviceImgInputs.length; i++) {
-            const deviceImgError = document.getElementById(`device-img-error-${i}`);
-            if (!validateFiles(deviceImgInputs[i].value)) {
-                isValid = false;
-                deviceImgInputs[i].style.borderColor = "red";
-                deviceImgError.textContent = "* Por favor ingresa imágenes válidas";
-            } else {
-                deviceImgInputs[i].style.borderColor = "";
-                deviceImgError.textContent = "*";
-            }
+    for (let i = 0; i < deviceImgInputs.length; i++) {
+        const deviceImgError = document.getElementById(`device-img-error-${i}`);
+        if (!validateFiles(deviceImgInputs[i].files)) {
+            isValid = false;
+            deviceImgInputs[i].style.borderColor = "red";
+            deviceImgError.textContent = "* Por favor ingresa imágenes válidas";
+        } else {
+            deviceImgInputs[i].style.borderColor = "";
+            deviceImgError.textContent = "*";
         }
+    };
 
+    // Mensaje de confirmación
+    let donationForm = document.forms["donation-form"];
+    let validationBox = document.getElementById("val-box");
+    let validationMessage = document.getElementById("val-msg");
+    let validationBtns = document.getElementById("val-btns");
+    
+    validationBtns.innerHTML = "";
+
+    if (!isValid) {
+        validationBox.hidden = false;
+        validationMessage.innerText = "Hay errores en el formulario. Por favor, corrígelos.";
+    } else {
+        // Ocultar el formulario
+        donationForm.style.display = "none";
+
+        // establecer mensaje de éxito
+        validationMessage.innerText = "¿Confirma que desea publicar esta donación?";
+
+        // aplicar estilos de éxito
+        validationBox.style.backgroundColor = "#ddffdd";
+        validationBox.style.borderLeftColor = "#4CAF50";
+
+        // Agregar botones para enviar el formulario o volver
+        let submitButton = document.createElement("button");
+        submitButton.className = "blue-btn";
+        submitButton.innerText = "Sí, confirmo";
+        submitButton.style.marginRight = "10px";
+        submitButton.addEventListener("click", () => {
+            validationMessage.innerText = "Hemos recibido la información de su donación. Muchas gracias.";
+            validationBtns.removeChild(backButton);
+            submitButton.innerText = "Regresar al inicio";
+            
+            // Redirigir al inicio cuando se haga clic en el botón
+            submitButton.addEventListener("click", () => {
+                window.location.href = "../html/index.html";
+            });
+        });
+
+        let backButton = document.createElement("button");
+        backButton.className = "red-btn"
+        backButton.innerText = "No, quiero volver al formulario";
+        backButton.addEventListener("click", () => {
+            // Mostrar el formulario nuevamente
+            donationForm.style.display = "block";
+            validationBox.hidden = true;
+        });
+
+        validationBtns.appendChild(submitButton);
+        validationBtns.appendChild(backButton);
+
+        // hacer visible el mensaje de validación
+        validationBox.hidden = false;
     }
+    
 };  
 
 // --- Event Listener ---

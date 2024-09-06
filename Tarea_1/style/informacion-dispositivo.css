@@ -21,6 +21,40 @@ img {
     margin-right: auto;
 }
 
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+button#submit-btn {
+    background-color: #28a745;
+}
+
+button#submit-btn:hover {
+    background-color: #218838;
+}
+
 .regresar {
     padding-top: 1.5rem;
     text-align: center;

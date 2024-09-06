@@ -8,10 +8,12 @@
 </head>
 <body>
     <div class="main-container">
-        <h1>Agregar Donación</h1>
-
-        <form name="donacion-form" method="post" enctype="multipart/form-data">
-
+        <div id="val-box" hidden>
+            <h2 id="val-msg"></h2>
+            <div id="val-btns"></div>
+        </div>
+        <form name="donation-form" method="post" enctype="multipart/form-data">
+            <h1>Agregar Donación</h1>
             <!-- Información de Contacto -->
             <fieldset id="contact-info">
                 <h2>Información de Contacto</h2>
@@ -114,12 +116,12 @@
 
             <!-- Botón Agregar Dispositivo -->
             <div class="buttons">
-                <button type="button" id="add-device">Agregar otro dispositivo a esta donación</button>
+                <button type="button" class="blue-btn" id="add-device">Agregar otro dispositivo a esta donación</button>
             </div>
 
             <!-- Botón Publicar Dispositivo -->
             <div class="buttons">
-                <button type="button" id="submit-btn">Publicar esta donación</button>
+                <button type="button" class="green-btn" id="submit-btn">Publicar esta donación</button>
             </div>
 
             <!-- Botón Regresar al Inicio -->

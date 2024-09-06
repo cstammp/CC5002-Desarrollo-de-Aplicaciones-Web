@@ -57,21 +57,49 @@ button {
     margin-bottom: 15px;
 }
 
-button#add-device {
+button.blue-btn {
     background-color: #4c64ee;
     margin-top: 20px;
 }
 
-button#add-device:hover {
+button.blue-btn:hover {
     background-color:  #2537a1;
 }
 
-button#submit-btn {
+button.green-btn {
     background-color: #28a745;
 }
 
-button#submit-btn:hover {
+button.green-btn:hover {
     background-color: #218838;
+}
+
+button.red-btn {
+    background-color: #e40c0c;
+}
+
+button.red-btn:hover {
+    background-color: #860b0b;
+}
+
+#val-box {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#val-box h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+#val-btns {
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: disc;
+    color: #a94442;
 }
 
 .return {
