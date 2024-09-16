@@ -10,8 +10,8 @@ const addDeviceForm = () => {
     const deviceNameDiv = document.createElement("div");
     deviceNameDiv.classList.add("group-input");
     deviceNameDiv.innerHTML = `
-        <label for="device-${contadorDispositivos}">Nombre dispositivo ${contadorDispositivos}<span id="device-name-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
-        <input type="text" id="device-${contadorDispositivos}" name="device-${contadorDispositivos}" class="deviceName" minlength="3" maxlength="80" size="80" required>
+        <label for="device-name-${contadorDispositivos}">Nombre dispositivo ${contadorDispositivos}<span id="device-name-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
+        <input type="text" id="device-name-${contadorDispositivos}" name="device-name-${contadorDispositivos}" class="deviceName" minlength="3" maxlength="80" size="80" required>
     `;
 
     const deviceDescriptionDiv = document.createElement("div");
