@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Dispositivo | HOE</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../style/informacion-dispositivo.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Información Dispositivo</h1>
+        <div class="info">
+            <h2>Información de Contacto</h2>
+            <p><b>Nombre donante:</b> Elton Tito</p>
+            <p><b>Email donante:</b> elton.tito@hotmail.com</p>
+            <p><b>Número celular donante:</b> 951922942</p>
+            <p><b>Región:</b> Región de La Araucanía</p>
+            <p><b>Comuna:</b> Maullín</p>
+        </div>
+
+        <div class="info">
+            <h2>Información del Dispositivo</h2>
+            <p><b>Nombre dispositivo:</b> Monitor Acer 27 / 100 Hz</p>
+            <p><b>Descripción:</b> Resolución Máxima de 1920 x 1080 y Tiempo de Respuesta de 1 ms</p>
+            <p><b>Tipo:</b> Pantalla</p>
+            <p><b>Años de Uso:</b> 98</p>
+            <p><b>Estado de funcionamiento:</b> Funciona perfecto</p>
+        </div>
+
+        <div class="info">
+            <h2>Fotos del dispositivo</h2>
+            <img id="img-dispositivo" src="../img/pantalla640.png" alt="Monitor Acer 27 / 100 Hz">
+        </div>
+
+        <div id="comment-list">
+            <h3>Comentarios sobre el dispositivo</h3>
+            <!-- Aquí se llenaran los comentarios dinámicamente -->
+        </div>
+
+        <div class="comment-form">
+            <h3>Agregar comentario</h3>
+            <form id="comment-form" name="comment-form" method="post">
+
+                <div id="name-input" class="group-input">
+                    <label for="name">Nombre <span id="name-error" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="name" name="name" minlength="3" maxlength="80" required>
+                </div>
+
+                <div id="text-input" class="group-input"> 
+                    <label for="text">Comentario <span id="text-error" style="color:#ee0c0cc0">*</span></label>
+                    <textarea id="text" name="text" placeholder="Escribe tu comentario ..." rows="4" cols="50" minlength="5" required></textarea>
+                </div>
+
+                <!-- Botón Publicar Comentario -->
+                <div class="buttons">
+                    <button type="button" id="submit-btn">Publicar Comentario</button>
+                </div>
+            </form>    
+        </div>
+
+        <div class="regresar">
+            <a href="index.html">Regresar al inicio</a>
+        </div>
+    </div>
+    <script src="../js/resize-img.js"></script>
+    <script src="../js/add-comment.js"></script>
+</body>
+</html>

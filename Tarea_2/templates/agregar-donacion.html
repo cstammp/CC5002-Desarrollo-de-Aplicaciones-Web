@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Donación | HOE</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../style/agregar-donacion.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="val-box" hidden>
+            <h2 id="val-msg">.</h2>
+            <div id="val-btns"></div>
+        </div>
+        <form name="donation-form" method="post" enctype="multipart/form-data">
+            <h1>Agregar Donación</h1>
+            <!-- Información de Contacto -->
+            <fieldset id="contact-info">
+                <h2>Información de Contacto</h2>
+
+                <!-- Nombre Donante -->
+                <div id="name-input" class="group-input">
+                    <label for="name">Nombre donante <span id="name-error" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="name" name="name" minlength="3" maxlength="80" size="80" required>
+                </div>
+
+                <!-- Email Donante -->
+                <div id="email-input" class="group-input">
+                    <label for="email">Email donante <span id="email-error" style="color:#ee0c0cc0">*</span></label>
+                    <input type="email" id="email" name="email" size="30" required>
+                </div>
+
+                <!-- Telefono Donante -->
+                <div id="phone-input" class="group-input">
+                    <label for="phone">Número celular donante</label>
+                    <input type="tel" id="phone" name="phone" size="15">
+                </div>
+
+                <!-- Región -->
+                <div id="region-input" class="group-input">
+                    <label for="region">Región <span id="region-error" style="color:#ee0c0cc0">*</span></label>
+                    <select id="region" name="region" required>
+                        <option value=""> --- Seleccionar Región --- </option>
+                        <!-- Opciones de regiones se llenarán dinámicamente -->
+                    </select>
+                </div>
+
+                <!-- Comuna -->
+                <div id="comuna-input" class="group-input">
+                    <label for="comuna">Comuna <span id="comuna-error" style="color:#ee0c0cc0">*</span></label>
+                    <select id="comuna" name="comuna" required>
+                            <option value=""> --- Seleccionar Comuna --- </option>
+                            <!-- Opciones de comunas se llenarán dinámicamente -->
+                        </select>
+                    </div>
+            </fieldset>
+            
+                <!-- Información del Dispositivo -->
+            <fieldset id="device-info">
+                <h2>Información del dispositivo</h2>
+
+                <!-- Nombre Dispositivo -->
+                <div id="device-input" class="group-input">
+                    <label for="device-0">Nombre dispositivo <span id="device-name-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="device-0" name="device-0" class="deviceName" minlength="3" maxlength="80" size="80" required>
+                </div>
+
+                <!-- Descripción Dispositivo -->
+                <div id="description-input" class="group-input deviceDescription-input">
+                    <label for="description-0">Descripción</label>
+                    <textarea id="description-0" name="description-0" class="deviceDescription" placeholder="Describe acá el dispositivo..." rows="4" cols="50"></textarea>
+                </div>
+
+                <!-- Tipo Dispositivo -->
+                <div id="device-type-input" class="group-input">
+                    <label for="device-type-0">Tipo <span id="device-type-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <select id="device-type-0" name="device-type-0" class="deviceType" required>
+                        <option value="">--- Seleccionar ---</option>
+                        <option value="pantalla">Pantalla</option>
+                        <option value="notebook">Notebook</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="celular">Celular</option>
+                        <option value="consola">Consola</option>
+                        <option value="mouse">Mouse</option>
+                        <option value="teclado">Teclado</option>
+                        <option value="impresora">Impresora</option>
+                        <option value="parlante">Parlante</option>
+                        <option value="audifonos">Audífonos</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <!-- Años de Uso Dispositivo-->
+                <div id="device-age-input" class="group-input">
+                    <label for="device-age-0">Años de uso <span id="device-age-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="text" id="device-age-0" name="device-age-0" class="deviceAge" size="3" required> 
+                </div>   
+
+                <!-- Estado Funcionamiento Dispositivo -->
+                <div id="device-state-input" class="group-input">
+                    <label for="device-state-0">Estado funcionamiento <span id="device-state-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <select id="device-state-0" name="device-state-0" class="deviceState" required>
+                        <option value="">--- Seleccionar ---</option>
+                        <option value="perfecto">Funciona perfecto</option>
+                        <option value="a-medias">Funciona a medias</option>
+                        <option value="no-funciona">No funciona</option>
+                    </select>
+                </div>
+
+                <!-- Subir Imagenes Dispositivo -->
+                <div id="img-device-input" class="group-input">
+                    <label for="img-device-0">Foto de productos <span id="device-img-error-0" style="color:#ee0c0cc0">*</span></label>
+                    <input type="file" id="img-device-0" name="img-device-0" class="deviceImg" accept="image/*" multiple required>
+                </div>
+            </fieldset>
+
+            <!-- Botón Agregar Dispositivo -->
+            <div class="buttons">
+                <button type="button" class="blue-btn" id="add-device">Agregar otro dispositivo a esta donación</button>
+            </div>
+
+            <!-- Botón Publicar Dispositivo -->
+            <div class="buttons">
+                <button type="button" class="green-btn" id="submit-btn">Publicar esta donación</button>
+            </div>
+
+            <!-- Botón Regresar al Inicio -->
+            <div class="return">
+                <a href="index.html">Regresar al inicio</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Links archivos javascript -->
+    <script src="../js/select.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/add-device.js"></script>
+</body>
+</html>
