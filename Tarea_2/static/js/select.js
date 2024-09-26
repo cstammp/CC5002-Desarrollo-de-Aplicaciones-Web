@@ -1,6 +1,6 @@
 //  --- Usar fetch para cargar el JSON region_comuna.json ---
 
-fetch("../region_comuna.json")
+fetch("/static/region_comuna.json")
     .then(response => response.json())
     .then(data => {
         // Poblar el select de region

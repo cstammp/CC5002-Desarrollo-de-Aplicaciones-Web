@@ -217,7 +217,9 @@ const handleFormSubmit = () => {
             
             // Redirigir al inicio cuando se haga clic en el botón
             submitButton.addEventListener("click", () => {
-                window.location.href = "../html/index.html";
+                // POST
+                let form = document.getElementById("donation-form");
+                form.submit();
             });
         });
 
