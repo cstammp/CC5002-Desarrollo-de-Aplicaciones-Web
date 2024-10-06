@@ -34,7 +34,7 @@ def agregar_donacion():
         device_types = [request.form.get(key) for key in request.form if key.startswith('device-type-')]
         device_ages = [request.form.get(key) for key in request.form if key.startswith('device-age-')]
         device_states = [request.form.get(key) for key in request.form if key.startswith('device-state-')]
-        device_imgs = {key: request.files.getlist(key) for key in request.files if key.startswith('img-device-')}
+        device_imgs = [request.files.getlist(key) for key in request.files if key.startswith('img-device-')]
 
         if validate_donation(name, email, region, comuna, device_names, device_types, device_ages, device_states, device_imgs):
 
@@ -51,22 +51,18 @@ def agregar_donacion():
             for i, dispositivo in enumerate(dispositivos):
                 dispositivo_id = dispositivo[0]
 
-                img_key = f'img-device-{i}'
-                if img_key in device_imgs:
-                    for img in device_imgs[img_key]:
-                        # 1. Generar nombre único para la imagen
-                        _filename = hashlib.sha256(
-                            secure_filename(img.filename).encode("utf-8")
-                        ).hexdigest()
-                        _extension = filetype.guess(img).extension
-                        img_filename = f"{_filename}.{_extension}"
-
-                        # 2. Guardar la imagen en la carpeta de uploads
-                        img.save(os.path.join(app.config["UPLOAD_FOLDER"], img_filename))
-
-                        # 3. Guardar imagen en la base de datos
-                        filepath = "static/uploads"
-                        db.insert_img(filepath, img_filename, dispositivo_id)
+                for img in device_imgs[i]:  # Itera sobre cada imagen
+                    # 1. Generar nombre único para la imagen
+                    _filename = hashlib.sha256(
+                        secure_filename(img.filename).encode("utf-8")
+                    ).hexdigest()
+                    _extension = filetype.guess(img).extension
+                    img_filename = f"{_filename}.{_extension}"
+                    # 2. Guardar la imagen en la carpeta de uploads
+                    img.save(os.path.join(app.config["UPLOAD_FOLDER"], img_filename))
+                    # 3. Guardar imagen en la base de datos
+                    filepath = "static/uploads"
+                    db.insert_img(filepath, img_filename, dispositivo_id)
 
             return redirect(url_for("index"))
 

@@ -47,7 +47,7 @@ def validate_deviceAges(values):
     return True        
 
 def validate_deviceStates(values):
-    states = ["perfecto","a-medias","no-funciona"]
+    states = ["funciona perfecto","funciona a medias","no funciona"]
     for value in values:
         if not value in states:
             return False
@@ -56,24 +56,25 @@ def validate_deviceStates(values):
 def validate_imgs(values):
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
     ALLOWED_MIMETYPES = {"image/jpeg", "image/png", "image/gif"}
-    
-    for value in values:
-        # check if a file was submitted
-        if value is None:
-            return False
 
-        # check if the browser submitted an empty file
-        if value.filename == "":
-            return False
+    for img_list in values:
+        for img in img_list:
+            # check if a file was submitted
+            if img is None:
+                return False
 
-        # check file extension
-        ftype_guess = filetype.guess(value)
-        if ftype_guess.extension not in ALLOWED_EXTENSIONS:
-            return False
+            # check if the browser submitted an empty file
+            if img.filename == "":
+                return False
 
-        # check mimetype
-        if ftype_guess.mime not in ALLOWED_MIMETYPES:
-            return False
+            # check file extension
+            ftype_guess = filetype.guess(img)
+            if ftype_guess.extension not in ALLOWED_EXTENSIONS:
+                return False
+
+            # check mimetype
+            if ftype_guess.mime not in ALLOWED_MIMETYPES:
+                return False
     return True
 
 def validate_donation(name,email,region,comuna,device_names,device_types,device_ages,device_states,device_imgs):

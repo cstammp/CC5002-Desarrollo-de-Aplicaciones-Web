@@ -54,9 +54,9 @@ const addDeviceForm = () => {
         <label for="device-state-${contadorDispositivos}">Estado funcionamiento <span id="device-state-error-${contadorDispositivos}" style="color:#ee0c0cc0">*</span></label>
         <select id="device-state-${contadorDispositivos}" name="device-state-${contadorDispositivos}" class="deviceState" required>
             <option value="">--- Seleccionar ---</option>
-            <option value="perfecto">Funciona perfecto</option>
-            <option value="a-medias">Funciona a medias</option>
-            <option value="no-funciona">No funciona</option>
+            <option value="funciona perfecto">Funciona perfecto</option>
+            <option value="funciona a medias">Funciona a medias</option>
+            <option value="no funciona">No funciona</option>
         </select>
     `;
 
