@@ -21,8 +21,8 @@ def agregar_donacion():
         device_types = [request.form.get(key) for key in request.form if key.startswith('device-type-')]
         device_ages = [request.form.get(key) for key in request.form if key.startswith('device-age-')]
         device_states = [request.form.get(key) for key in request.form if key.startswith('device-state-')]
-        device_imgs = request.files.getlist('img-device-')
-        
+        device_imgs = [request.files.get(key) for key in request.files if key.startswith('img-device-')]
+
         if validate_donation(name, email, region, comuna, device_names, device_types, device_ages, device_states, device_imgs):
             return redirect(url_for("index"))
 

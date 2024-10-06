@@ -1,6 +1,6 @@
 import re
 import json
-import os
+import filetype
 
 # Ruta al archivo JSON
 file_path = "static/region_comuna.json"
@@ -10,8 +10,6 @@ with open(file_path, 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 regions = {str(region['id']): [str(comuna['id']) for comuna in region['comunas']] for region in data['regiones']}
-
-print(regions)
 
 # -- Validations --
 
@@ -56,7 +54,28 @@ def validate_deviceStates(values):
     return True
 
 def validate_imgs(values):
-    return True  
+    ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+    ALLOWED_MIMETYPES = {"image/jpeg", "image/png", "image/gif"}
+    if len(values) > 3 or len(values) < 1:
+        return False
+    for value in values:
+        # check if a file was submitted
+        if value is None:
+            return False
+
+        # check if the browser submitted an empty file
+        if value.filename == "":
+            return False
+
+        # check file extension
+        ftype_guess = filetype.guess(value)
+        if ftype_guess.extension not in ALLOWED_EXTENSIONS:
+            return False
+
+        # check mimetype
+        if ftype_guess.mime not in ALLOWED_MIMETYPES:
+            return False
+    return True
 
 def validate_donation(name,email,region,comuna,device_names,device_types,device_ages,device_states,device_imgs):
     return validate_name(name) and validate_email(email) and validate_region_comuna(region,comuna)\
