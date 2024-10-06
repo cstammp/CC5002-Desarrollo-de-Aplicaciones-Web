@@ -56,8 +56,7 @@ def validate_deviceStates(values):
 def validate_imgs(values):
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
     ALLOWED_MIMETYPES = {"image/jpeg", "image/png", "image/gif"}
-    if len(values) > 3 or len(values) < 1:
-        return False
+    
     for value in values:
         # check if a file was submitted
         if value is None:
