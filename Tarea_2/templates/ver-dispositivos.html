@@ -5,55 +5,35 @@ Ver Dispositivos | HOE
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="../style/ver-dispositivos.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/ver-dispositivos.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="main-container">
     <h1>Ver Dispositivos</h1>
     <table id="device-table">
-        <tr>
-            <th>Tipo</th>
-            <th>Nombre Dispositivo</th>
-            <th>Estado</th>
-            <th>Comuna</th>
-            <th>Fotos</th>
-        </tr>
-        <tr onclick="window.location='./informacion-dispositivo.html'">
-            <td>Pantalla</td>
-            <td>Monitor Acer 27'/ 100 Hz</td>
-            <td>Funciona perfecto</td>
-            <td>Renaico</td>
-            <td><img src="../img/pantalla120.png" alt="Monitor Acer 27 / 100 Hz" width="120" height="120"></td>
-        </tr>
-        <tr onclick="window.location='./informacion-dispositivo.html'">
-            <td>Mouse</td>
-            <td>Mouse Gamer Rayo McQueen</td>
-            <td>Funciona a medias</td>
-            <td>Tiltil</td>
-            <td><img src="../img/mouse120.jpg" alt="Mouse Gamer Rayo McQueen" width="120" height="120"></td>
-        </tr>
-        <tr  onclick="window.location='./informacion-dispositivo.html'">
-            <td>Notebook</td>
-            <td>Hello Kitty i7 500Gb SSD</td>
-            <td>Funciona perfecto</td>
-            <td>Tocopilla</td>
-            <td><img src="../img/notebook120.png" alt="Hello Kitty i7" width="120" height="120"></td>
-        </tr>
-        <tr onclick="window.location='./informacion-dispositivo.html'">
-            <td>Consola</td>
-            <td>Bob Esponja PLUG & PLAY</td>
-            <td>No funciona</td>
-            <td>Petorca</td>
-            <td><img src="../img/console120.jpg" alt="Bob Esponja PLUG & PLAY" width="120" height="120"></td>
-        </tr>
-        <tr onclick="window.location='./informacion-dispositivo.html'">
-            <td>Celular</td>
-            <td>iPhone X Plata 64Gb</td>
-            <td>Funciona a medias</td>
-            <td>Cobquecura</td>
-            <td><img src="../img/celular120.jpg" alt="iPhone X Plata 64Gb" width="120" height="120"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Nombre Dispositivo</th>
+                <th>Estado</th>
+                <th>Comuna</th>
+                <th>Fotos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if data %}
+                {% for device in data %}
+                    <tr onclick="window.location='{{ url_for('info_dispositivo', contacto_id=device.contacto_id) }}'">
+                        <td> {{device.type}} </td>
+                        <td> {{device.name}} </td>
+                        <td> {{device.state}} </td>
+                        <td> {{device.comuna}} </td>
+                        <td> <img src="{{device.path_image}}"  alt="{{device.name}}" width="120" height="120"> </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
     </table>
     <div class="regresar">
         <a href="{{ url_for('index') }}">Regresar al inicio</a>

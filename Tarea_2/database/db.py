@@ -31,6 +31,13 @@ def get_contactos():
 	contactos = cursor.fetchall()
 	return contactos
 
+def get_contacto_by_id(contacto_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute("SELECT id, nombre, email, celular, comuna_id, fecha_creacion FROM contacto WHERE id=%s;", (contacto_id,))
+	contactos = cursor.fetchone()
+	return contactos
+
 # -- DISPOSITIVO --
 
 # Insertar dispositivo
@@ -45,6 +52,13 @@ def get_dispositivo(contacto_id):
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("SELECT id, contacto_id, nombre, descripcion, tipo, anos_uso, estado FROM dispositivo WHERE contacto_id=%s;", (contacto_id,))
+    dispositivo = cursor.fetchall()
+    return dispositivo
+
+def get_dispositivos_by_5(start):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT D.id, D.contacto_id, COM.nombre, D.nombre, D.descripcion, D.tipo, D.anos_uso, D.estado FROM dispositivo D, contacto CO, comuna COM WHERE contacto_id=CO.id AND CO.comuna_id=COM.id ORDER BY id DESC LIMIT %s, %s;", (start, 5))
     dispositivo = cursor.fetchall()
     return dispositivo
 
