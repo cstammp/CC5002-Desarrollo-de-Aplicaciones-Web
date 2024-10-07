@@ -12,8 +12,8 @@ Información Dispositivo | HOE
 <div class="main-container">
     <h1>Información Dispositivo</h1>
     <div class="info">
-        <h2>Información de Contacto</h2>
         {% if contacto and region and comuna %}
+            <h2>Información de Contacto</h2>
             <p><b>Nombre donante:</b> {{contacto[1]}}</p>
             <p><b>Email donante:</b> {{contacto[2]}}</p>
             <p><b>Número celular donante:</b> {{contacto[3]}}</p>
@@ -24,8 +24,8 @@ Información Dispositivo | HOE
         {% endif %}
     </div>
     <div class="info">
-        <h2>Información del Dispositivo</h2>
         {% if device %}
+            <h2>Información del Dispositivo</h2>
             <p><b>Nombre dispositivo:</b> {{device[2]}}</p>
             <p><b>Descripción:</b> {{device[3]}}</p>
             <p><b>Tipo:</b> {{device[4]}}</p>
@@ -34,8 +34,13 @@ Información Dispositivo | HOE
         {% endif %}
     </div>
     <div class="info">
-        <h2>Fotos del dispositivo</h2>
-        <img id="img-dispositivo" src="{{ url_for('static', filename='img/pantalla640.png') }}" alt="Monitor Acer 27 / 100 Hz">
+        {% if imgs_filenames %}
+            <h2>Fotos del dispositivo</h2>
+            {% for img_filename in imgs_filenames %}
+                <img class="img-dispositivo" src="{{img_filename}}" alt="{{device[2]}}" width="640" height="480">
+                <br>
+            {% endfor %}
+        {% endif %}
     </div>
     <div id="comment-list">
         <h3>Comentarios sobre el dispositivo</h3>

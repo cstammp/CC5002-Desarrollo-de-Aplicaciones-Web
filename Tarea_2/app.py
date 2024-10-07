@@ -77,9 +77,9 @@ def ver_dispositivos():
         data = []
         for device in db.get_dispositivos_by_5(0):
             device_id, contacto_id, comuna, nombre, _, tipo, _, estado = device
-            device_img = db.get_img(device_id)
+            device_imgs = db.get_img(device_id)
             ### CHECKPOINT 
-            img_filename = f"uploads/{device_img[0][2]}"
+            img_filename = f"uploads/{device_imgs[0][2]}"
             data.append({
                 "device_id": device_id,
                 "contacto_id": contacto_id,
@@ -91,12 +91,19 @@ def ver_dispositivos():
             })
     return render_template("ver-dispositivos.html", data=data)  
 
-@app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>")
+@app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>", methods=["GET"])
 def info_dispositivo(contacto_id, device_id):
-    contacto = db.get_contacto_by_id(contacto_id)
-    comuna, region = db.get_comuna_region(contacto[4])
-    device = db.get_dispositivo_by_id(device_id)
-    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device)
+    if request.method == "GET":
+        contacto = db.get_contacto_by_id(contacto_id)
+        comuna, region = db.get_comuna_region(contacto[4])
+        device = db.get_dispositivo_by_id(device_id)
+        imgs = db.get_img(device_id)
+        imgs_filenames = []
+        for img in imgs:
+            img_filename = f"uploads/{img[2]}"
+            path_image = url_for("static", filename=img_filename)
+            imgs_filenames.append(path_image)
+    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames)
 
 if __name__ == "__main__":
     app.run(debug=True)

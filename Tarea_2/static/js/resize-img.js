@@ -1,7 +1,10 @@
-//  --- Variables ---
-const imgDispositivo = document.getElementById("img-dispositivo");
+// --- Variables ---
+const imgDispositivos = document.querySelectorAll(".img-dispositivo");
 
-//  --- Event Listener ---
-imgDispositivo.addEventListener("click", () => {
-    imgDispositivo.src = "../img/pantalla1280.png";
+// --- Event Listener ---
+imgDispositivos.forEach(img => {
+    img.addEventListener("click", () => {
+        img.width = 1280;
+        img.height = 1024;
+    });
 });
