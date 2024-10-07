@@ -81,6 +81,7 @@ def ver_dispositivos():
             ### CHECKPOINT 
             img_filename = f"uploads/{device_img[0][2]}"
             data.append({
+                "device_id": device_id,
                 "contacto_id": contacto_id,
                 "type": tipo,
                 "name": nombre,
@@ -90,11 +91,12 @@ def ver_dispositivos():
             })
     return render_template("ver-dispositivos.html", data=data)  
 
-@app.route("/informacion-dispositivo/<int:contacto_id>")
-def info_dispositivo(contacto_id):
-    contacto_info = db.get_contacto_by_id(contacto_id)
-    devices = db.get_dispositivo(contacto_id)
-    return render_template("informacion-dispositivo.html", contacto_info= contacto_info, devices=devices)
+@app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>")
+def info_dispositivo(contacto_id, device_id):
+    contacto = db.get_contacto_by_id(contacto_id)
+    comuna, region = db.get_comuna_region(contacto[4])
+    device = db.get_dispositivo_by_id(device_id)
+    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device)
 
 if __name__ == "__main__":
     app.run(debug=True)

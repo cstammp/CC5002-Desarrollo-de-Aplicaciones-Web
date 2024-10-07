@@ -24,7 +24,7 @@ Ver Dispositivos | HOE
         <tbody>
             {% if data %}
                 {% for device in data %}
-                    <tr onclick="window.location='{{ url_for('info_dispositivo', contacto_id=device.contacto_id) }}'">
+                    <tr onclick="window.location='{{ url_for('info_dispositivo', contacto_id=device.contacto_id, device_id=device.device_id) }}'">
                         <td> {{device.type}} </td>
                         <td> {{device.name}} </td>
                         <td> {{device.state}} </td>

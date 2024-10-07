@@ -52,7 +52,14 @@ def get_dispositivo(contacto_id):
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("SELECT id, contacto_id, nombre, descripcion, tipo, anos_uso, estado FROM dispositivo WHERE contacto_id=%s;", (contacto_id,))
-    dispositivo = cursor.fetchall()
+    dispositivos = cursor.fetchall()
+    return dispositivos
+
+def get_dispositivo_by_id(device_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, contacto_id, nombre, descripcion, tipo, anos_uso, estado FROM dispositivo WHERE id=%s;", (device_id,))
+    dispositivo = cursor.fetchone()
     return dispositivo
 
 def get_dispositivos_by_5(start):
@@ -78,3 +85,12 @@ def get_img(dispositivo_id):
     cursor.execute("SELECT id, ruta_archivo, nombre_archivo FROM archivo WHERE dispositivo_id=%s;", (dispositivo_id,))
     dispositivo = cursor.fetchall()
     return dispositivo
+
+# -- REGION Y COMUNA --
+
+def get_comuna_region(comuna_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT CO.nombre, R.nombre FROM comuna CO, region R WHERE CO.region_id=R.id AND CO.id=%s;", (comuna_id,))
+    comuna = cursor.fetchone()
+    return comuna
