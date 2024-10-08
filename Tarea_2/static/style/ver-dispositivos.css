@@ -31,6 +31,7 @@ table td {
     border: 1px solid #c4c4c4;
     padding: 8px;
     text-align: left;
+    cursor: pointer;
 }
 
 table tr:nth-child(even) {
