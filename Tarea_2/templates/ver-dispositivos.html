@@ -35,11 +35,20 @@ Ver Dispositivos | HOE
             {% endif %}
         </tbody>
     </table>
-    <div class="regresar">
+    <div class="buttons">
+        {% if current_page > 0 %}
+            <button type="button" class="blue-btn" onclick="goToPrevPage()" id="prevpage-btn" data-current-page="{{current_page}}">Página anterior</button>
+        {% endif %}
+        {% if current_page < max_page %}
+            <button type="button" class="blue-btn" onclick="goToNextPage()" id="nextpage-btn" data-current-page="{{current_page}}">Siguiente página</button>
+        {% endif %}
+    </div>
+    <div class="return">
         <a href="{{ url_for('index') }}">Regresar al inicio</a>
     </div>
 </div>
 {% endblock %}
 
 {% block javascript %}
+<script src="{{ url_for('static', filename='js/go-to-page.js') }}"></script>
 {% endblock %}

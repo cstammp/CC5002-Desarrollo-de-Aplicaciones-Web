@@ -41,7 +41,44 @@ table tr:hover {
     background-color: #dddddd;
 }
 
-.regresar {
-    padding-top: 1.5rem;
+button {
+    width: auto;
+    padding: 13px;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+button.blue-btn {
+    background-color: #4c64ee;
+    margin-top: 20px;
+    display: block; /
+}
+
+button.blue-btn:hover {
+    background-color:  #2537a1;
+}
+
+#prevpage-btn {
+    float: left;
+}
+
+#nextpage-btn {
+    float: right;
+}
+
+.return {
+    padding-top: 5rem;
     text-align: center;
+}
+
+.regresar a {
+    text-decoration: none;
+}
+
+.regresar a:hover {
+    text-decoration: underline;
 }

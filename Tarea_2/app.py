@@ -71,11 +71,11 @@ def agregar_donacion():
     elif request.method == "GET":
         return render_template("agregar-donacion.html")
 
-@app.route("/ver-dispositivos", methods=["GET"])
-def ver_dispositivos():
+@app.route("/ver-dispositivos/<int:page>", methods=["GET"])
+def ver_dispositivos(page):
     if request.method == "GET":
         data = []
-        for device in db.get_dispositivos_by_5(0):
+        for device in db.get_dispositivos_by_5(page * 5):
             device_id, contacto_id, comuna, nombre, _, tipo, _, estado = device
             device_imgs = db.get_img(device_id)
             ### CHECKPOINT 
@@ -89,7 +89,9 @@ def ver_dispositivos():
                 "comuna": comuna,
                 "path_image": url_for("static", filename=img_filename),
             })
-    return render_template("ver-dispositivos.html", data=data)  
+        total_devices = db.get_total_devices()
+        max_page = int(total_devices/5)
+    return render_template("ver-dispositivos.html", data=data, current_page=page, max_page=max_page)
 
 @app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>", methods=["GET"])
 def info_dispositivo(contacto_id, device_id):

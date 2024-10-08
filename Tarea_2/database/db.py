@@ -69,6 +69,13 @@ def get_dispositivos_by_5(start):
     dispositivo = cursor.fetchall()
     return dispositivo
 
+def get_total_devices():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM dispositivo;")
+    num_dispositivos = cursor.fetchone()[0]
+    return num_dispositivos
+
 # -- ARCHIVOS --
 
 # Insertar archivo
