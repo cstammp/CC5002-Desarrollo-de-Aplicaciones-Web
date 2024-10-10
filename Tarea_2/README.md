@@ -68,7 +68,7 @@ Asegúrate de que MySQL está instalado y funcionando. Crea una base de datos pa
 flask run
 ```
 
-## Creditos
+## Créditos
 
 Para agregar dispositivos, código inspirado en:
     Aux 2  Raúl De la Fuente A.
