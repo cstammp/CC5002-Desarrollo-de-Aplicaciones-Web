@@ -1,4 +1,4 @@
-Tarea 2 - Desarrollo de Aplicaciones Web
+# Tarea 2 - Desarrollo de Aplicaciones Web
 Realizado por: Cristóbal Stamm
 
 Este proyecto utiliza Flask como framework web y MySQL como base de datos. A continuación, se describen los pasos para configurar y ejecutar el entorno de desarrollo.
