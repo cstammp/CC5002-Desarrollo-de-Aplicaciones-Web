@@ -5,6 +5,14 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
+-- Crear Usuario
+-- -----------------------------------------------------
+CREATE USER IF NOT EXISTS 'cc5002'@'%' IDENTIFIED BY 'programacionweb';
+
+-- Otorgar permisos al usuario para la base de datos tarea2
+GRANT ALL PRIVILEGES ON tarea2.* TO 'cc5002'@'%';
+
+-- -----------------------------------------------------
 -- Schema tarea2
 -- -----------------------------------------------------
 
