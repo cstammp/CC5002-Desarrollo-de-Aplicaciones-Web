@@ -5,3 +5,6 @@ Para agregar dispositivos, código inspirado en:
 
 Para algunas validaciones, código inspirado en:
 	Aux 3 Francisco Márquez
+
+Para agregar archivos, código inspirado en:
+    Aux 6 Francisco Márquez
