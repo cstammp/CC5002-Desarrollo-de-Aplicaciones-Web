@@ -1,21 +1,3 @@
-const comments = [
-    { date: '2023-10-03', name: 'Elsa Capuntas', text: 'Buena pantalla, me sirvió para la universidad.' },
-    { date: '2024-01-19', name: 'Paredes del Campo', text: 'Le falta brillo, el resto bien.' }
-];
-
-//  --- Función para llenar los comentarios dinámicamente ---
-const populateComments = () => {
-    const commentList = document.getElementById('comment-list');
-    commentList.innerHTML = '<h3>Comentarios sobre el dispositivo</h3>';
-
-    comments.forEach(comment => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `<b>${comment.name}</b> (${comment.date}):<br>${comment.text}<br><br>`;
-        commentList.appendChild(commentDiv);
-    });
-}
-
 //  --- Funciones de Validación ---
 const validateName = (name) => {
     if(!name) return false;
@@ -60,29 +42,11 @@ const handleFormSubmit = () => {
     }
 
     if (isValid){
-        // Crear un nuevo comentario
-        const newComment = {
-            date: new Date().toISOString().split('T')[0], // Fecha actual en formato YYYY-MM-DD
-            name: nameInput.value,
-            text: textInput.value
-        };
-
-        // Agregar el nuevo comentario al array
-        comments.push(newComment);
-
-        // Limpiar el formulario
-        document.getElementById('comment-form').reset();
-
-        // Volver a mostrar los comentarios
-        populateComments();
+        let form = document.getElementById("comment-form");
+        form.submit();
     }    
 }
 
 // --- Event Listener ---
 const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", handleFormSubmit);
-
-// --- Mostrar los comentarios al cargar la página ---
-window.onload = function() {
-    populateComments();
-};

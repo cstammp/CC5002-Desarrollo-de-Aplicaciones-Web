@@ -11,7 +11,7 @@ with open(file_path, 'r', encoding='utf-8') as file:
 
 regions = {str(region['id']): [str(comuna['id']) for comuna in region['comunas']] for region in data['regiones']}
 
-# -- Validations --
+# -- VALIDATIONS --
 
 def validate_name(value):
     return value and len(value) >= 3 and len(value) <= 80
@@ -81,3 +81,11 @@ def validate_donation(name,email,region,comuna,device_names,device_types,device_
     return validate_name(name) and validate_email(email) and validate_region_comuna(region,comuna)\
     and validate_deviceNames(device_names) and validate_deviceTypes(device_types) and validate_deviceAges(device_ages)\
     and validate_deviceStates(device_states) and validate_imgs(device_imgs)
+
+# -- COMMENT VALIDATIONS --
+
+def validate_text(value):
+    return value and len(value) >= 5
+
+def validate_comment(name,text):
+    return validate_name(name) and validate_text(text)

@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for
-from utils.validations import validate_donation
+from utils.validations import validate_donation, validate_comment
 from database import db
 from werkzeug.utils import secure_filename
 import hashlib
@@ -93,19 +93,35 @@ def ver_dispositivos(page):
         max_page = int(total_devices/5)
     return render_template("ver-dispositivos.html", data=data, current_page=page, max_page=max_page)
 
-@app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>", methods=["GET"])
+@app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>", methods=["GET", "POST"])
 def info_dispositivo(contacto_id, device_id):
-    if request.method == "GET":
-        contacto = db.get_contacto_by_id(contacto_id)
-        comuna, region = db.get_comuna_region(contacto[4])
-        device = db.get_dispositivo_by_id(device_id)
-        imgs = db.get_img(device_id)
-        imgs_filenames = []
-        for img in imgs:
-            img_filename = f"uploads/{img[2]}"
-            path_image = url_for("static", filename=img_filename)
-            imgs_filenames.append(path_image)
-    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames)
+    contacto = db.get_contacto_by_id(contacto_id)
+    comuna, region = db.get_comuna_region(contacto[4])
+    device = db.get_dispositivo_by_id(device_id)
+    imgs = db.get_img(device_id)
+    imgs_filenames = []
+    for img in imgs:
+        img_filename = f"uploads/{img[2]}"
+        path_image = url_for("static", filename=img_filename)
+        imgs_filenames.append(path_image)
+    
+    if request.method == "POST":
+        name_comment = request.form.get("name")
+        text_comment = request.form.get("text")
+        
+        if validate_comment(name_comment, text_comment):
+            db.insert_comment(name_comment, text_comment, device_id)
+    
+    comments = []
+    for comment in db.get_comments(device_id):
+        name_comment, text_comment, date_comment = comment
+        comments.append({
+            "name": name_comment,
+            "text": text_comment,
+            "date": date_comment
+        })
+
+    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames, comments=comments)
 
 if __name__ == "__main__":
     app.run(debug=True)

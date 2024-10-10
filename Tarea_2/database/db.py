@@ -15,7 +15,7 @@ def get_conn():
 
 # Insertar contacto
 def insert_contacto(name, email, phone, comuna_id):
-    fecha_creacion = datetime.now()   #fecha y hora actual en formato YYYY-MM-DD HH:MM:SS
+    fecha_creacion = datetime.now()   # fecha y hora actual en formato YYYY-MM-DD HH:MM:SS
     conn = get_conn()
     cursor = conn.cursor()
     cursor.execute("INSERT INTO contacto (nombre, email, celular, comuna_id, fecha_creacion) VALUES (%s,%s,%s,%s,%s);", (name, email, phone, comuna_id, fecha_creacion))
@@ -101,3 +101,19 @@ def get_comuna_region(comuna_id):
     cursor.execute("SELECT CO.nombre, R.nombre FROM comuna CO, region R WHERE CO.region_id=R.id AND CO.id=%s;", (comuna_id,))
     comuna = cursor.fetchone()
     return comuna
+
+# -- COMENTARIOS --
+
+def insert_comment(name, text, device_id):
+    date = datetime.now()   # fecha y hora actual en formato YYYY-MM-DD HH:MM:SS
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO comentario (nombre, texto, fecha, dispositivo_id) VALUES (%s,%s,%s,%s);", (name, text, date, device_id))
+    conn.commit()
+
+def get_comments(device_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT nombre, texto, fecha FROM comentario WHERE dispositivo_id=%s;", (device_id,))
+    comments = cursor.fetchall()
+    return comments

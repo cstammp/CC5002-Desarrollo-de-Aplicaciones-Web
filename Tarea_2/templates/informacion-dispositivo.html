@@ -44,7 +44,17 @@ Información Dispositivo | HOE
     </div>
     <div id="comment-list">
         <h3>Comentarios sobre el dispositivo</h3>
-        <!-- Aquí se llenaran los comentarios dinámicamente -->
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <b>{{comment.name}}</b> ({{comment.date}}):<br>{{comment.text}}<br><br>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="comment">
+                No hay comentarios<br><br>
+            </div>
+        {% endif %}
     </div>
     <div class="comment-form">
         <h3>Agregar comentario</h3>
