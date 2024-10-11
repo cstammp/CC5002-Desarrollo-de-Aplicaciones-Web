@@ -8,10 +8,10 @@ const validateName = (name) => {
 
 const validateEmail = (email) => {
     if (!email) return false;
-    let lengthValid = email.length > 15;
+    let lengthValid = email.length >= 5;
 
     // validamos el formato
-    let regex = /^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    let regex = /^[\w.-]+@[a-zA-Z\d-]+(\.[a-zA-Z]{2,6})+$/;
     let formatValid = regex.test(email);
 
     return lengthValid && formatValid;
