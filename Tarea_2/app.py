@@ -36,6 +36,8 @@ def agregar_donacion():
         device_states = [request.form.get(key) for key in request.form if key.startswith('device-state-')]
         device_imgs = [request.files.getlist(key) for key in request.files if key.startswith('img-device-')]
 
+        error = ""
+
         if validate_donation(name, email, region, comuna, device_names, device_types, device_ages, device_states, device_imgs):
 
             # Insertar contacto en la base de datos
@@ -65,8 +67,10 @@ def agregar_donacion():
                     db.insert_img(filepath, img_filename, dispositivo_id)
 
             return redirect(url_for("index"))
+        else:
+            error = "Lo sentimos, no pudimos procesar el formulario debido a errores en los datos. Por favor vuelva a intentarlo."
 
-        return render_template("agregar-donacion.html")
+        return render_template("agregar-donacion.html", error=error)
 
     elif request.method == "GET":
         return render_template("agregar-donacion.html")

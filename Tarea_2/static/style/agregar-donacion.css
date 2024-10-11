@@ -82,7 +82,7 @@ button.red-btn:hover {
     background-color: #860b0b;
 }
 
-#val-box {
+#val-box, #error-box {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
     margin-bottom: 20px;
@@ -90,7 +90,7 @@ button.red-btn:hover {
     border-radius: 4px;
 }
 
-#val-box h2 {
+#val-box h2, #error-box h2 {
     margin: 0 0 10px 0;
     font-size: 18px;
 }

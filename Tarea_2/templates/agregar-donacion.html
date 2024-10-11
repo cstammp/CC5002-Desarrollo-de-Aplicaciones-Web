@@ -14,6 +14,9 @@ Agregar Donación | HOE
         <h2 id="val-msg">.</h2>
         <div id="val-btns"></div>
     </div>
+    {% if error %}
+        <div id="error-box"><h2 id="error-msg">{{ error }}</h2></div>
+    {% endif %}
     <form name="donation-form" id="donation-form" method="post" enctype="multipart/form-data">
         <h1>Agregar Donación</h1>
         <!-- Información de Contacto -->
