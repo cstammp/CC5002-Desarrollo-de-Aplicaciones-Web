@@ -90,7 +90,7 @@ def ver_dispositivos(page):
                 "path_image": url_for("static", filename=img_filename),
             })
         total_devices = db.get_total_devices()
-        max_page = int(total_devices/5)
+        max_page = int((total_devices-1)/5)
     return render_template("ver-dispositivos.html", data=data, current_page=page, max_page=max_page)
 
 @app.route("/informacion-dispositivo/<int:contacto_id>/<int:device_id>", methods=["GET", "POST"])

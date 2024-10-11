@@ -58,6 +58,10 @@ def validate_imgs(values):
     ALLOWED_MIMETYPES = {"image/jpeg", "image/png", "image/gif"}
 
     for img_list in values:
+        # check number of files per device
+        if len(img_list) > 3 or len(img_list) <=0:
+            return False
+        
         for img in img_list:
             # check if a file was submitted
             if img is None:
