@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Ver Dispositivos | HOE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/ver-dispositivos.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Ver Dispositivos</h1>
+    <table id="device-table">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Nombre Dispositivo</th>
+                <th>Estado</th>
+                <th>Comuna</th>
+                <th>Fotos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if data %}
+                {% for device in data %}
+                    <tr onclick="window.location='{{ url_for('info_dispositivo', contacto_id=device.contacto_id, device_id=device.device_id) }}'">
+                        <td> {{device.type}} </td>
+                        <td> {{device.name}} </td>
+                        <td> {{device.state}} </td>
+                        <td> {{device.comuna}} </td>
+                        <td> <img src="{{device.path_image}}"  alt="{{device.name}}" width="120" height="120"> </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <div class="buttons">
+        {% if current_page > 0 %}
+            <button type="button" class="blue-btn" onclick="goToPrevPage()" id="prevpage-btn" data-current-page="{{current_page}}">Página anterior</button>
+        {% endif %}
+        {% if current_page < max_page %}
+            <button type="button" class="blue-btn" onclick="goToNextPage()" id="nextpage-btn" data-current-page="{{current_page}}">Siguiente página</button>
+        {% endif %}
+    </div>
+    <div class="return">
+        <a href="{{ url_for('index') }}">Regresar al inicio</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/go-to-page.js') }}"></script>
+{% endblock %}

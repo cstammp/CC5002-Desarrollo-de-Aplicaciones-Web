@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Información Dispositivo | HOE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/informacion-dispositivo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Información Dispositivo</h1>
+    <div class="info">
+        {% if contacto and region and comuna %}
+            <h2>Información de Contacto</h2>
+            <p><b>Nombre donante:</b> {{contacto[1]}}</p>
+            <p><b>Email donante:</b> {{contacto[2]}}</p>
+            <p><b>Número celular donante:</b> {{contacto[3]}}</p>
+            <p><b>Región:</b> {{region}}</p>
+            <p><b>Comuna:</b> {{comuna}}</p>
+        {% else %}
+            <p>Error en la base de datos.</p>
+        {% endif %}
+    </div>
+    <div class="info">
+        {% if device %}
+            <h2>Información del Dispositivo</h2>
+            <p><b>Nombre dispositivo:</b> {{device[2]}}</p>
+            <p><b>Descripción:</b> {{device[3]}}</p>
+            <p><b>Tipo:</b> {{device[4]}}</p>
+            <p><b>Años de Uso:</b> {{device[5]}}</p>
+            <p><b>Estado de funcionamiento:</b> {{device[6]}}</p>
+        {% endif %}
+    </div>
+    <div class="info">
+        {% if imgs_filenames %}
+            <h2>Fotos del dispositivo</h2>
+            {% for img_filename in imgs_filenames %}
+                <img class="img-dispositivo" src="{{img_filename}}" alt="{{device[2]}}" width="640" height="480">
+                <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div id="comment-list">
+        <h3>Comentarios sobre el dispositivo</h3>
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <b>{{comment.name}}</b> ({{comment.date}}):<br>{{comment.text}}<br><br>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="comment">
+                No hay comentarios<br><br>
+            </div>
+        {% endif %}
+    </div>
+    <div class="comment-form">
+        <h3>Agregar comentario</h3>
+        <form id="comment-form" name="comment-form" method="post">
+            <div id="name-input" class="group-input">
+                <label for="name">Nombre <span id="name-error" style="color:#ee0c0cc0">*</span></label>
+                <input type="text" id="name" name="name" minlength="3" maxlength="80" required>
+            </div>
+            <div id="text-input" class="group-input"> 
+                <label for="text">Comentario <span id="text-error" style="color:#ee0c0cc0">*</span></label>
+                <textarea id="text" name="text" placeholder="Escribe tu comentario ..." rows="4" cols="50" minlength="5" required></textarea>
+            </div>
+            <!-- Botón Publicar Comentario -->
+            <div class="buttons">
+                <button type="button" id="submit-btn">Publicar Comentario</button>
+            </div>
+        </form>    
+    <div class="return">
+        <a href="{{ url_for('index') }}">Regresar al inicio</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/resize-img.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add-comment.js') }}"></script>
+{% endblock %}
