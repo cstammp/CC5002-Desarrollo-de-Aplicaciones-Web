@@ -117,3 +117,19 @@ def get_comments(device_id):
     cursor.execute("SELECT nombre, texto, fecha FROM comentario WHERE dispositivo_id=%s;", (device_id,))
     comments = cursor.fetchall()
     return comments
+
+# -- STATS --
+
+def get_stats_dispositivos():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT tipo, COUNT(*) FROM dispositivo GROUP BY tipo;")
+    stats = cursor.fetchall()
+    return stats
+
+def get_stats_contactos():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COM.nombre, COUNT(*) FROM contacto C, comuna COM WHERE COM.id=C.comuna_id GROUP BY C.comuna_id;")
+    stats = cursor.fetchall()
+    return stats

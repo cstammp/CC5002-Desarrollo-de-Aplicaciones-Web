@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
+from flask_cors import cross_origin
 from utils.validations import validate_donation, validate_comment
 from database import db
 from werkzeug.utils import secure_filename
@@ -126,6 +127,28 @@ def info_dispositivo(contacto_id, device_id):
         })
 
     return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames, comments=comments)
+
+@app.route("/stats-dispositivos", methods=["GET"])
+def stats_dispositivos():
+    return render_template("stats-dispoditivos.html")
+
+@app.route("/get-stats-dispositivos", methods=["GET"])
+@cross_origin(origin="localhost", supports_credentials=True)
+def get_stats_dispositivos(): 
+    stats = db.get_stats_dispositivos()
+    data = [{"name": stat[0], "quantity": stat[1]} for stat in stats]
+    return jsonify(data)
+
+@app.route("/stats-contactos", methods=["GET"])
+def stats_contactos():
+    return render_template("stats-contactos.html")
+
+@app.route("/get-stats-contactos", methods=["GET"])
+@cross_origin(origin="localhost", supports_credentials=True)
+def get_stats_contactos(): 
+    stats = db.get_stats_contactos()
+    data = [{"name": stat[0], "quantity": stat[1]} for stat in stats]
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
