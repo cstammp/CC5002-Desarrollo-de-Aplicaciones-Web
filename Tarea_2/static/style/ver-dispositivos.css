@@ -56,7 +56,7 @@ button {
 button.blue-btn {
     background-color: #4c64ee;
     margin-top: 20px;
-    display: block; /
+    display: block;
 }
 
 button.blue-btn:hover {

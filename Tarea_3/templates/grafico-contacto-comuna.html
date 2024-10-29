@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Grafico Contacto por Comuna | HOE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/ver-dispositivos.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1>Grafico Contacto por Comuna</h1>
+    <div class="return">
+        <a href="{{ url_for('index') }}">Regresar al inicio</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
