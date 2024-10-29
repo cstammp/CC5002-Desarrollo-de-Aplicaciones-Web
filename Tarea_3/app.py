@@ -130,13 +130,13 @@ def info_dispositivo(contacto_id, device_id):
 
 @app.route("/stats-dispositivos", methods=["GET"])
 def stats_dispositivos():
-    return render_template("stats-dispoditivos.html")
+    return render_template("stats-dispositivos.html")
 
 @app.route("/get-stats-dispositivos", methods=["GET"])
 @cross_origin(origin="localhost", supports_credentials=True)
 def get_stats_dispositivos(): 
     stats = db.get_stats_dispositivos()
-    data = [{"name": stat[0], "quantity": stat[1]} for stat in stats]
+    data = [{"category": stat[0], "quantity": stat[1]} for stat in stats]
     return jsonify(data)
 
 @app.route("/stats-contactos", methods=["GET"])
@@ -147,7 +147,7 @@ def stats_contactos():
 @cross_origin(origin="localhost", supports_credentials=True)
 def get_stats_contactos(): 
     stats = db.get_stats_contactos()
-    data = [{"name": stat[0], "quantity": stat[1]} for stat in stats]
+    data = [{"comuna": stat[0], "quantity": stat[1]} for stat in stats]
     return jsonify(data)
 
 if __name__ == "__main__":

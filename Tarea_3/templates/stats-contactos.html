@@ -5,12 +5,14 @@ Estadísticas Contactos por Comuna | HOE
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='style/ver-dispositivos.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style/stats.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="main-container">
-    <h1>Grafico Contacto por Comuna</h1>
+    <figure class="highcharts-figure">
+        <div id="container-2"></div>
+    </figure>
     <div class="return">
         <a href="{{ url_for('index') }}">Regresar al inicio</a>
     </div>
@@ -18,4 +20,11 @@ Estadísticas Contactos por Comuna | HOE
 {% endblock %}
 
 {% block javascript %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="{{ url_for('static', filename='js/stats.js') }}"></script>
 {% endblock %}
