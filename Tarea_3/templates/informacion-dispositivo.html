@@ -10,6 +10,9 @@ Información Dispositivo | HOE
 
 {% block content %}
 <div class="main-container">
+    {% if error %}
+        <div id="error-box"><h2 id="error-msg">{{ error }}</h2></div>
+    {% endif %}
     <h1>Información Dispositivo</h1>
     <div class="info">
         {% if contacto and region and comuna %}

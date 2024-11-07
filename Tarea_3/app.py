@@ -109,14 +109,18 @@ def info_dispositivo(contacto_id, device_id):
         img_filename = f"uploads/{img[2]}"
         path_image = url_for("static", filename=img_filename)
         imgs_filenames.append(path_image)
-    
+        
+    error = ""
+
     if request.method == "POST":
+
         name_comment = request.form.get("name")
         text_comment = request.form.get("text")
         
         if validate_comment(name_comment, text_comment):
             db.insert_comment(name_comment, text_comment, device_id)
-    
+        else:
+            error = "Lo sentimos, no pudimos procesar el formulario debido a errores en los datos. Por favor vuelva a intentarlo."
     comments = []
     for comment in db.get_comments(device_id):
         name_comment, text_comment, date_comment = comment
@@ -126,7 +130,7 @@ def info_dispositivo(contacto_id, device_id):
             "date": date_comment
         })
 
-    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames, comments=comments)
+    return render_template("informacion-dispositivo.html", contacto=contacto, comuna=comuna, region=region, device=device, imgs_filenames=imgs_filenames, comments=comments, error=error)
 
 @app.route("/stats-dispositivos", methods=["GET"])
 def stats_dispositivos():

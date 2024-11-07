@@ -37,6 +37,19 @@ input, textarea {
     color: #333;
 }
 
+#error-box {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#error-box h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
 button {
     width: 100%;
     padding: 13px;
