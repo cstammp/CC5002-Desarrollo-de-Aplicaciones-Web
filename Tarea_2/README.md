@@ -19,8 +19,7 @@ Antes de empezar, asegúrate de tener instalados los siguientes programas en tu 
 Clona este repositorio a tu máquina local utilizando Git:
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
+git clone https://github.com/cstammp/CC5002-Desarrollo-de-Aplicaciones-Web
 ```
 
 ### 2. Crear y activar el entorno virtual (venv)
